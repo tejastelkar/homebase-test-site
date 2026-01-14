@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Star, Quote, Home, DollarSign, TrendingUp, Key, FileSearch, Handshake } from "lucide-react";
+import { Star, Quote, Home, DollarSign, TrendingUp, Key, FileSearch, Handshake, Award, Clock, Users, ThumbsUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
@@ -93,6 +93,36 @@ const services = [
   },
 ];
 
+const stats = [
+  { value: "15+", label: "Years Experience", icon: Clock },
+  { value: "2,500+", label: "Properties Sold", icon: Home },
+  { value: "98%", label: "Client Satisfaction", icon: ThumbsUp },
+  { value: "50+", label: "Expert Agents", icon: Users },
+];
+
+const differentiators = [
+  {
+    icon: Award,
+    title: "Award-Winning Service",
+    description: "Recognized as the top real estate agency in the region for 5 consecutive years.",
+  },
+  {
+    icon: Clock,
+    title: "24/7 Support",
+    description: "Our dedicated team is available around the clock to answer your questions.",
+  },
+  {
+    icon: Users,
+    title: "Personalized Approach",
+    description: "We take time to understand your unique needs and preferences.",
+  },
+  {
+    icon: ThumbsUp,
+    title: "No Hidden Fees",
+    description: "Transparent pricing with no surprises. What you see is what you get.",
+  },
+];
+
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -164,6 +194,56 @@ const Index = () => {
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
+              Why Choose HomeFind
+            </h2>
+            <p className="text-muted-foreground">
+              Numbers that speak for themselves
+            </p>
+          </div>
+          
+          {/* Stats */}
+          <div className="mb-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="rounded-lg border border-border bg-card p-6 text-center shadow-sm"
+              >
+                <stat.icon className="mx-auto mb-3 h-8 w-8 text-primary" />
+                <div className="text-3xl font-bold text-primary md:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Key Differentiators */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {differentiators.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center rounded-lg border border-border bg-muted/30 p-6 text-center"
+              >
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                  <item.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
