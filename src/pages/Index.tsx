@@ -11,7 +11,7 @@ import property3 from "@/assets/property-3.jpg";
 const properties = [
   {
     image: property1,
-    title: "Modern Luxury Vill",
+    title: "Modern Luxury Tejas",
     location: "Beverly Hills, CA",
     price: "$1,250,000",
     beds: 4,
