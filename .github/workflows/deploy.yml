@@ -1,4 +1,4 @@
-name: Deploy React Site to cPanel (FTP)
+name: Deploy React Site to cPanel (FTPS)
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -24,7 +24,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy to cPanel via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          security: loose
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_TARGET }}
+          server-dir: /public_html/tejas-homebase/
           dangerous-clean-slate: true
-
