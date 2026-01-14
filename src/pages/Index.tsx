@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Home, DollarSign, TrendingUp, Key, FileSearch, Handshake } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
@@ -60,6 +60,39 @@ const testimonials = [
   },
 ];
 
+const services = [
+  {
+    icon: Home,
+    title: "Buying",
+    description: "Find your dream home with our expert guidance. We'll help you navigate the market and secure the best deal.",
+  },
+  {
+    icon: DollarSign,
+    title: "Selling",
+    description: "Maximize your property's value with our proven marketing strategies and extensive buyer network.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Investing",
+    description: "Build wealth through real estate. We identify high-potential properties for smart investment decisions.",
+  },
+  {
+    icon: Key,
+    title: "Rentals",
+    description: "Whether renting or leasing, we connect you with quality properties that fit your lifestyle and budget.",
+  },
+  {
+    icon: FileSearch,
+    title: "Property Valuation",
+    description: "Get accurate market assessments to understand your property's true worth in today's market.",
+  },
+  {
+    icon: Handshake,
+    title: "Consultation",
+    description: "Expert advice for all your real estate questions. Our team is here to guide you every step of the way.",
+  },
+];
+
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -102,6 +135,36 @@ const Index = () => {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((property, index) => (
               <PropertyCard key={index} {...property} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="bg-primary/5 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
+              Our Services
+            </h2>
+            <p className="text-muted-foreground">
+              Comprehensive real estate solutions tailored to your needs
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <service.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold text-foreground">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground">{service.description}</p>
+              </div>
             ))}
           </div>
         </div>
