@@ -396,6 +396,28 @@ const Index = () => {
       {/* Newsletter Section */}
       <NewsletterSection />
 
+      {/* CTA Banner Section */}
+      <section className="bg-muted py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
+              Ready to Find Your Dream Home?
+            </h2>
+            <p className="mb-8 text-lg text-muted-foreground">
+              Schedule a free consultation with one of our expert agents today. No obligations, just personalized guidance to help you make the right decision.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button asChild size="lg" className="px-8">
+                <Link to="/contact">Schedule Free Consultation</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8">
+                <a href="tel:+1234567890">Call (123) 456-7890</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
