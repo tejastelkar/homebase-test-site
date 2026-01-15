@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Star, Quote, Home, DollarSign, TrendingUp, Key, FileSearch, Handshake, Award, Clock, Users, ThumbsUp } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Star, Quote, Home, DollarSign, TrendingUp, Key, FileSearch, Handshake, Award, Clock, Users, ThumbsUp, Mail, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
@@ -122,6 +125,77 @@ const differentiators = [
     description: "Transparent pricing with no surprises. What you see is what you get.",
   },
 ];
+
+const NewsletterSection = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: "Successfully subscribed!",
+        description: "Thank you for joining our newsletter.",
+      });
+      setEmail("");
+      setIsLoading(false);
+    }, 1000);
+  };
+
+  return (
+    <section className="bg-primary py-16 md:py-20">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="mb-4 flex justify-center">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-foreground/10">
+              <Mail className="h-7 w-7 text-primary-foreground" />
+            </div>
+          </div>
+          <h2 className="mb-3 text-3xl font-bold text-primary-foreground md:text-4xl">
+            Stay Updated
+          </h2>
+          <p className="mb-8 text-primary-foreground/80">
+            Subscribe to our newsletter for exclusive listings, market insights, and real estate tips delivered to your inbox.
+          </p>
+          <form onSubmit={handleSubmit} className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-12 border-primary-foreground/20 bg-primary-foreground/10 pl-4 pr-4 text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:ring-primary-foreground/30"
+                required
+              />
+            </div>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              variant="secondary"
+              className="h-12 px-6"
+            >
+              {isLoading ? (
+                "Subscribing..."
+              ) : (
+                <>
+                  Subscribe <Send className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </form>
+          <p className="mt-4 text-sm text-primary-foreground/60">
+            No spam, unsubscribe anytime. We respect your privacy.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Index = () => {
   return (
@@ -318,6 +392,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
 
       <Footer />
     </div>
