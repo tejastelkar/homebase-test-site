@@ -250,6 +250,32 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="border-y border-border bg-card py-12">
+        <div className="container mx-auto px-4">
+          <p className="mb-8 text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            Trusted by Leading Brands
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {[
+              "Zillow",
+              "Realtor.com",
+              "Redfin",
+              "Century 21",
+              "RE/MAX",
+              "Coldwell Banker",
+            ].map((partner) => (
+              <div
+                key={partner}
+                className="text-xl font-bold text-muted-foreground/50 transition-colors hover:text-muted-foreground md:text-2xl"
+              >
+                {partner}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container mx-auto px-4">
