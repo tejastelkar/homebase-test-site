@@ -11,13 +11,22 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+/**
+ * PROD === true ONLY when `vite build` runs
+ * - Lovable IDE → false
+ * - Lovable preview → false
+ * - Local dev → false
+ * - cPanel build → true
+ */
+const basename = import.meta.env.PROD ? "/tejas-homebase" : "/";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
 
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
