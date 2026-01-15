@@ -11,20 +11,24 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const basename =
+  import.meta.env.MODE === "production" ? "/tejas-homebase" : "/";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/tejas-homebase">
-  <Routes>
-    <Route path="/" element={<Index />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/contact" element={<Contact />} />
-    <Route path="/thank-you" element={<ThankYou />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-</BrowserRouter>
+
+      <BrowserRouter basename={basename}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
 
     </TooltipProvider>
   </QueryClientProvider>
