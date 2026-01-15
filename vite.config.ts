@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/tejas-homebase/",
+  base: "/", // 👈 REQUIRED for Lovable IDE preview
   plugins: [react()],
   resolve: {
     alias: {
